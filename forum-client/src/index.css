@@ -1,0 +1,757 @@
+/* ========== REDDIT STYLE CSS ========== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: #DAE0E6;
+  color: #1A1A1B;
+  line-height: 1.5;
+}
+
+/* Тёмная тема */
+body.dark {
+  background-color: #030303;
+  color: #D7DADC;
+}
+
+/* ========== LAYOUT ========== */
+.app {
+  min-height: 100vh;
+}
+
+.main-layout {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 24px;
+  display: flex;
+  gap: 24px;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.sidebar {
+  width: 320px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .main-layout {
+    flex-direction: column;
+    padding: 16px;
+  }
+  .sidebar {
+    width: 100%;
+  }
+}
+
+/* ========== КАРТОЧКИ ========== */
+.reddit-card {
+  background-color: white;
+  border-radius: 16px;
+  border: 1px solid #EDEFF1;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+body.dark .reddit-card {
+  background-color: #1A1A1B;
+  border-color: #343536;
+}
+
+.card-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid #EDEFF1;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+body.dark .card-header {
+  border-bottom-color: #343536;
+}
+
+/* ========== ПОСТ (как в Reddit) ========== */
+.post {
+  background-color: white;
+  border-radius: 16px;
+  border: 1px solid #EDEFF1;
+  margin-bottom: 12px;
+  transition: border-color 0.1s;
+  overflow: hidden;
+}
+
+.post:hover {
+  border-color: #C6C8CA;
+}
+
+body.dark .post {
+  background-color: #1A1A1B;
+  border-color: #343536;
+}
+
+body.dark .post:hover {
+  border-color: #565758;
+}
+
+.post-container {
+  display: flex;
+}
+
+/* ========== ПАНЕЛЬ ГОЛОСОВАНИЯ ========== */
+.vote-panel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+  background-color: #F6F7F8;
+  border-radius: 24px;
+  width: auto;
+}
+
+body.dark .vote-panel {
+  background-color: #272729;
+}
+
+.vote-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #878A8C;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 24px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.vote-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.vote-button.up:hover {
+  color: #FF4500;
+  background-color: rgba(255, 69, 0, 0.1);
+}
+
+.vote-button.down:hover {
+  color: #7193FF;
+  background-color: rgba(113, 147, 255, 0.1);
+}
+
+.vote-button.up.active {
+  color: white;
+  background-color: #FF4500;
+}
+
+.vote-button.down.active {
+  color: white;
+  background-color: #7193FF;
+}
+
+.vote-count {
+  font-weight: 600;
+  font-size: 14px;
+  margin: 0 4px;
+  color: #1A1A1B;
+  min-width: 32px;
+  text-align: center;
+}
+
+body.dark .vote-count {
+  color: #D7DADC;
+}
+
+/* Контент поста */
+.post-content {
+  flex: 1;
+  padding: 12px 16px;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  flex-wrap: wrap;
+}
+
+.post-author {
+  font-weight: 600;
+  color: #1A1A1B;
+}
+
+body.dark .post-author {
+  color: #D7DADC;
+}
+
+.post-author:hover {
+  color: #FF4500;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.post-dot {
+  color: #878A8C;
+}
+
+.post-time {
+  color: #878A8C;
+}
+
+.post-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #1A1A1B;
+  text-decoration: none;
+  display: block;
+}
+
+body.dark .post-title {
+  color: #D7DADC;
+}
+
+.post-title:hover {
+  color: #FF4500;
+  text-decoration: underline;
+}
+
+.post-text {
+  font-size: 14px;
+  color: #1A1A1B;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+body.dark .post-text {
+  color: #D7DADC;
+}
+
+/* Пост действия */
+.post-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.post-action {
+  background: none;
+  border: none;
+  color: #878A8C;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 24px;
+  transition: all 0.1s;
+  text-decoration: none;
+}
+
+.post-action:hover {
+  background-color: #F6F7F8;
+  color: #FF4500;
+}
+
+body.dark .post-action:hover {
+  background-color: #272729;
+}
+
+/* ========== ФОРМА СОЗДАНИЯ ПОСТА ========== */
+.create-post-card {
+  background-color: white;
+  border-radius: 16px;
+  border: 1px solid #EDEFF1;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+}
+
+body.dark .create-post-card {
+  background-color: #1A1A1B;
+  border-color: #343536;
+}
+
+.create-post-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: #FF4500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+  font-size: 16px;
+}
+
+.create-post-input {
+  flex: 1;
+  background-color: #F6F7F8;
+  border: 1px solid #EDEFF1;
+  border-radius: 24px;
+  padding: 12px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: left;
+  color: #878A8C;
+  transition: all 0.1s;
+}
+
+.create-post-input:hover {
+  background-color: #E9EBED;
+  border-color: #C6C8CA;
+}
+
+body.dark .create-post-input {
+  background-color: #272729;
+  border-color: #343536;
+  color: #878A8C;
+}
+
+/* ========== ФОРМА ПОСТА ========== */
+.post-form {
+  background-color: white;
+  border-radius: 16px;
+  border: 1px solid #EDEFF1;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+body.dark .post-form {
+  background-color: #1A1A1B;
+  border-color: #343536;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: #F6F7F8;
+  border: 1px solid #EDEFF1;
+  border-radius: 12px;
+  font-size: 14px;
+  margin-bottom: 12px;
+  font-family: inherit;
+}
+
+body.dark .form-input {
+  background-color: #272729;
+  border-color: #343536;
+  color: #D7DADC;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #FF4500;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* ========== САЙДБАР ========== */
+.sidebar-card {
+  background-color: white;
+  border-radius: 16px;
+  border: 1px solid #EDEFF1;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+body.dark .sidebar-card {
+  background-color: #1A1A1B;
+  border-color: #343536;
+}
+
+.sidebar-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid #EDEFF1;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+body.dark .sidebar-header {
+  border-bottom-color: #343536;
+}
+
+.sidebar-content {
+  padding: 12px 16px;
+}
+
+/* ========== НАВБАР ========== */
+.navbar {
+  background-color: white;
+  border-bottom: 1px solid #EDEFF1;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 8px 0;
+}
+
+body.dark .navbar {
+  background-color: #1A1A1B;
+  border-bottom-color: #343536;
+}
+
+.navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: #FF4500;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-icon {
+  font-size: 28px;
+}
+
+.search-bar {
+  flex: 1;
+  max-width: 600px;
+  margin: 0 16px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px 16px;
+  background-color: #F6F7F8;
+  border: 1px solid #EDEFF1;
+  border-radius: 24px;
+  font-size: 14px;
+}
+
+body.dark .search-input {
+  background-color: #272729;
+  border-color: #343536;
+  color: #D7DADC;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #FF4500;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* ========== КНОПКИ ========== */
+.btn-primary {
+  background-color: #FF4500;
+  color: white;
+  border: none;
+  border-radius: 9999px;
+  padding: 8px 16px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background-color: #E03D00;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #FF4500;
+  border: 1px solid #FF4500;
+  border-radius: 9999px;
+  padding: 8px 16px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  background-color: #FF4500;
+  color: white;
+}
+
+.btn-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.btn-icon:hover {
+  background-color: #F6F7F8;
+}
+
+body.dark .btn-icon:hover {
+  background-color: #272729;
+}
+
+/* ========== КАТЕГОРИИ НА ГЛАВНОЙ ========== */
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+.category-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 12px;
+  transition: background-color 0.2s;
+  text-decoration: none;
+}
+
+body.dark .category-card {
+  background-color: #1A1A1B;
+}
+
+.category-card:hover {
+  background-color: #F6F7F8;
+}
+
+body.dark .category-card:hover {
+  background-color: #272729;
+}
+
+.category-name {
+  font-weight: 600;
+  color: #FF4500;
+  margin-bottom: 4px;
+}
+
+.category-desc {
+  font-size: 13px;
+  color: #878A8C;
+}
+
+/* ========== АВТОРИЗАЦИЯ ========== */
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #DAE0E6 0%, #F0F2F5 100%);
+  padding: 20px;
+}
+
+body.dark .auth-container {
+  background: linear-gradient(135deg, #030303 0%, #1A1A1B 100%);
+}
+
+.auth-card {
+  background-color: white;
+  border-radius: 20px;
+  padding: 40px 48px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+}
+
+body.dark .auth-card {
+  background-color: #1A1A1B;
+}
+
+.auth-logo {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.logo-text {
+  display: block;
+  font-size: 28px;
+  font-weight: 700;
+  color: #FF4500;
+  margin-top: 8px;
+}
+
+.auth-title {
+  font-size: 28px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 8px;
+  color: #1A1A1B;
+}
+
+body.dark .auth-title {
+  color: #D7DADC;
+}
+
+.auth-subtitle {
+  text-align: center;
+  color: #878A8C;
+  font-size: 14px;
+  margin-bottom: 32px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #1A1A1B;
+}
+
+body.dark .input-label {
+  color: #D7DADC;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 14px 16px;
+  background-color: #F6F7F8;
+  border: 1px solid #EDEFF1;
+  border-radius: 12px;
+  font-size: 15px;
+  font-family: inherit;
+}
+
+body.dark .auth-input {
+  background-color: #272729;
+  border-color: #343536;
+  color: #D7DADC;
+}
+
+.auth-input:focus {
+  outline: none;
+  border-color: #FF4500;
+  box-shadow: 0 0 0 3px rgba(255, 69, 0, 0.1);
+}
+
+.auth-button {
+  width: 100%;
+  background-color: #FF4500;
+  color: white;
+  border: none;
+  border-radius: 9999px;
+  padding: 14px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: all 0.2s;
+}
+
+.auth-button:hover {
+  background-color: #E03D00;
+  transform: translateY(-1px);
+}
+
+.auth-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.auth-footer {
+  text-align: center;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #EDEFF1;
+}
+
+body.dark .auth-footer {
+  border-top-color: #343536;
+}
+
+.auth-footer a {
+  color: #FF4500;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.error-message {
+  background-color: #FFE3E3;
+  color: #FF0000;
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  font-size: 14px;
+  border-left: 4px solid #FF0000;
+}
+
+/* ========== ПРОФИЛЬ ========== */
+.profile-stats {
+  display: flex;
+  gap: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #EDEFF1;
+}
+
+body.dark .profile-stats {
+  border-top-color: #343536;
+}
+
+.profile-post-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1A1A1B;
+  margin-bottom: 4px;
+}
+
+body.dark .profile-post-title {
+  color: #D7DADC;
+}
+
+.profile-post-title:hover {
+  color: #FF4500;
+}
+
+/* ========== УТИЛИТЫ ========== */
+.text-center { text-align: center; }
+.py-20 { padding: 80px 0; }
+.mb-2 { margin-bottom: 8px; }
+.mb-4 { margin-bottom: 16px; }
+.mt-2 { margin-top: 8px; }
+.mt-4 { margin-top: 16px; }
+.flex { display: flex; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.gap-2 { gap: 8px; }
+.gap-3 { gap: 12px; }
+.gap-4 { gap: 16px; }
+.w-100 { width: 100%; }
+.cursor-pointer { cursor: pointer; }
